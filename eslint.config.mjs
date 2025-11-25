@@ -1,18 +1,34 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import stylistic from '@stylistic/eslint-plugin'
+import nextConfig from 'eslint-config-next'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
+const eslintConfig = [
+  ...nextConfig,
+  {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+      '@stylistic': stylistic,
+    },
+    rules: {
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+      '@stylistic/jsx-sort-props': 'error',
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
+      '@stylistic/jsx-quotes': ['error', 'prefer-double'],
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+      'eol-last': ['error', 'always'],
+    },
+  },
+  {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+    ],
+  },
+]
 
-export default eslintConfig;
+export default eslintConfig

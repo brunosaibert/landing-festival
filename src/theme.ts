@@ -1,4 +1,4 @@
-import { createSystem, defaultConfig } from "@chakra-ui/react"
+import { createSystem, defaultConfig } from '@chakra-ui/react'
 
 const config = {}
 
