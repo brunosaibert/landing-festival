@@ -1,18 +1,14 @@
 import { Box, Button, Heading, Text } from '@chakra-ui/react'
 
+import { Header } from '@/components/Header'
+
 export default function Home() {
   return (
     <Box
-      alignItems="center"
-      display="flex"
-      flexDirection="column"
-      h="100vh"
-      justifyContent="center"
-      w="100vw"
+      bg="bg.inverted"
+      minH="100vh"
     >
-      <Heading mb={4}>Setup Concluído</Heading>
-      <Text mb={6}>Next.js + Chakra UI</Text>
-      <Button colorPalette="orange">Clique aqui</Button>
+     <Header />
     </Box>
   )
 }

@@ -1,8 +1,95 @@
+import {
+  Avatar,
+  Button,
+  Container,
+  Flex,
+  HStack,
+  Icon,
+  Link,
+  Text,
+} from '@chakra-ui/react'
+import Image from 'next/image'
+import { AiOutlineHome, AiOutlineSound } from 'react-icons/ai'
+import { GoGear } from 'react-icons/go'
+import { IoSparkles } from 'react-icons/io5'
+import { MdOutlinePodcasts } from 'react-icons/md'
+
+const NAV_ITEMS = [
+  { icon: AiOutlineHome, label: 'Home', href: '#', isActive: true },
+  { icon: MdOutlinePodcasts, label: 'LIVE', href: '#' },
+  { icon: AiOutlineSound, label: 'Musical Styles', href: '#' },
+  { icon: IoSparkles, label: 'Exclusive Content', href: '#' },
+]
+
 function Header() {
   return (
-    <header>
-      <h1>Festival App</h1>
-    </header>
+    <Flex
+      as="header"
+      backdropFilter="blur(8px)"
+      bg="rgba(13, 13, 13, 0.8)"
+      position="sticky"
+      top={0}
+      w="100%"
+      zIndex={10}
+    >
+      <HStack
+        alignItems="flex-end"
+        as={Container}
+        justifyContent="space-between"
+        mx="auto"
+        py={4}
+      >
+        <HStack alignItems="flex-end">
+          <Link href="/">
+            <Image
+              alt="W labs Festival logo"
+              height={50}
+              objectFit="contain"
+              priority
+              src="/logo.png"
+              width={150}
+            />
+          </Link>
+          <HStack>
+            {NAV_ITEMS.map(({ icon: Icon, label, href, isActive }) => (
+              <Link
+                color={{
+                  base: isActive ? 'orange.400' : 'fg.subtle',
+                  _hover: 'orange.400',
+                }}
+                href={href}
+                key={label}
+                mx={2}
+                textDecoration="none"
+              >
+                <Icon />
+                {label}
+              </Link>
+            ))}
+          </HStack>
+        </HStack>
+        <Button
+          p={0}
+          variant="plain"
+        >
+          <Avatar.Root size="sm">
+            <Avatar.Fallback name="Peter Parker" />
+            <Avatar.Image src="https://avatar.iran.liara.run/public" />
+          </Avatar.Root>
+
+          <Text
+            color="fg.subtle"
+            fontSize="sm"
+            fontWeight="medium"
+          >
+            Peter Parker
+          </Text>
+          <Icon color="fg.subtle">
+            <GoGear />
+          </Icon>
+        </Button>
+      </HStack>
+    </Flex>
   )
 }
 
