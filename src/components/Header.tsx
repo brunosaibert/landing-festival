@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Button,
-  Container,
-  Flex,
-  HStack,
-  Icon,
-  Link,
-  Text,
-} from '@chakra-ui/react'
+import { Avatar, Button, Container, Flex, HStack, Link } from '@chakra-ui/react'
 import Image from 'next/image'
 import { AiOutlineHome, AiOutlineSound } from 'react-icons/ai'
 import { GoGear } from 'react-icons/go'
@@ -27,7 +18,7 @@ function Header() {
       as="header"
       backdropFilter="blur(8px)"
       bg="rgba(13, 13, 13, 0.8)"
-      position="sticky"
+      position="fixed"
       top={0}
       w="100%"
       zIndex={10}
@@ -54,7 +45,7 @@ function Header() {
             {NAV_ITEMS.map(({ icon: Icon, label, href, isActive }) => (
               <Link
                 color={{
-                  base: isActive ? 'orange.400' : 'fg.subtle',
+                  base: isActive ? 'orange.400' : 'gray.200',
                   _hover: 'orange.400',
                 }}
                 href={href}
@@ -69,24 +60,19 @@ function Header() {
           </HStack>
         </HStack>
         <Button
-          p={0}
-          variant="plain"
+          _hover={{
+            color: 'gray.800',
+          }}
+          color="gray.200"
+          px={2}
+          variant="ghost"
         >
-          <Avatar.Root size="sm">
+          <Avatar.Root size="xs">
             <Avatar.Fallback name="Peter Parker" />
             <Avatar.Image src="https://avatar.iran.liara.run/public" />
           </Avatar.Root>
-
-          <Text
-            color="fg.subtle"
-            fontSize="sm"
-            fontWeight="medium"
-          >
-            Peter Parker
-          </Text>
-          <Icon color="fg.subtle">
-            <GoGear />
-          </Icon>
+          Peter Parker
+          <GoGear />
         </Button>
       </HStack>
     </Flex>
