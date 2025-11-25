@@ -1,3 +1,6 @@
+import './global.css'
+
+import { Box } from '@chakra-ui/react'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
@@ -26,7 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Box
+            bg="black"
+            minH="100vh"
+          >
+            {children}
+          </Box>
+        </Providers>
       </body>
     </html>
   )
