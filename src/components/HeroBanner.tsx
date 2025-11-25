@@ -19,7 +19,7 @@ function HeroBanner() {
   return (
     <Box
       backgroundPosition="center"
-      bgImage="linear-gradient(to top, rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.2)), url('/hero.jpg')"
+      bgImage="linear-gradient(to top, {colors.black}, rgba(13, 13, 13, 0.2)), url('/hero.jpg')"
       bgSize="cover"
       h="100vh"
       position="relative"
