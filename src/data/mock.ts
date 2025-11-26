@@ -67,3 +67,21 @@ export const MOCK_CHANNELS = [
     timeRemaining: '00 min - 00:00 h',
   },
 ]
+
+export const MOCK_WIDE_AD_BANNERS = [
+  {
+    imageUrl: '/images/ad-heineken.jpg',
+    altText: 'Heineken Ad',
+    targetUrl: '#',
+  },
+  {
+    imageUrl: '/images/ad-coca.jpg',
+    altText: 'Coca-Cola Ad',
+    targetUrl: '#',
+  },
+  {
+    imageUrl: '/images/ad-samsung.jpg',
+    altText: 'Samsung Ad',
+    targetUrl: '#',
+  },
+]

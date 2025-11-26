@@ -1,4 +1,4 @@
-import { Button, Link, Text, VStack } from '@chakra-ui/react'
+import { Button, Center, Container, Link, Text, VStack } from '@chakra-ui/react'
 
 import { ArtistCard } from '@/components/ArtistCard'
 import { EmblaRail } from '@/components/EmblaRail'
@@ -6,7 +6,13 @@ import { GenreCategoryCard } from '@/components/GenreCategoryCard'
 import { Header } from '@/components/Header'
 import { HeroBanner } from '@/components/HeroBanner'
 import { LiveChannelCard } from '@/components/LiveChannelCard'
-import { FESTIVAL_GENRES, MOCK_ARTISTS, MOCK_CHANNELS } from '@/data/mock'
+import { WideAdBanner } from '@/components/WideAdBanner'
+import {
+  FESTIVAL_GENRES,
+  MOCK_ARTISTS,
+  MOCK_CHANNELS,
+  MOCK_WIDE_AD_BANNERS,
+} from '@/data/mock'
 
 export default function Home() {
   return (
@@ -27,7 +33,8 @@ export default function Home() {
           alignItems="flex-start"
           color="white"
           gap={4}
-          minW={200}
+          minW={250}
+          px={4}
         >
           <Text
             fontSize="xl"
@@ -61,7 +68,35 @@ export default function Home() {
           />
         ))}
       </EmblaRail>
-      <EmblaRail title="In Live">
+      <Center
+        as={Container}
+        bg="white"
+        p={0}
+      >
+        <EmblaRail
+          options={{
+            loop: true,
+            align: 'center',
+            slidesToScroll: 1,
+          }}
+          showDots
+        >
+          {MOCK_WIDE_AD_BANNERS.map((item, index) => (
+            <WideAdBanner
+              key={index}
+              {...item}
+            />
+          ))}
+        </EmblaRail>
+      </Center>
+      <EmblaRail
+        options={{
+          loop: true,
+          align: 'start',
+          slidesToScroll: 2,
+        }}
+        title="In Live"
+      >
         {MOCK_CHANNELS.map((channel, index) => (
           <LiveChannelCard
             key={index}
