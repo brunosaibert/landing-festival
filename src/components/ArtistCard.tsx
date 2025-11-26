@@ -78,6 +78,7 @@ function ArtistCard({
               Watch Again
               {'\n'}
               <Text
+                as="span"
                 fontWeight="medium"
                 opacity={0.7}
               >

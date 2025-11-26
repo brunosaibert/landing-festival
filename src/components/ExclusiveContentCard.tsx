@@ -52,6 +52,7 @@ function ExclusiveContentCard({ title, imageUrl, href }: ExclusiveContentCard) {
           {title}
           {'\n'}
           <Text
+            as="span"
             fontWeight="medium"
             opacity={0.7}
           >

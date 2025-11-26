@@ -35,7 +35,6 @@ function Header() {
             <Image
               alt="W labs Festival logo"
               height={50}
-              objectFit="contain"
               priority
               src="/logo.png"
               width={150}

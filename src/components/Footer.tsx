@@ -99,7 +99,6 @@ function Footer() {
             <Image
               alt="W labs Festival logo"
               height={40}
-              objectFit="contain"
               priority
               src="/logo.png"
               width={150}
@@ -116,7 +115,6 @@ function Footer() {
               <Image
                 alt="Download on Google Play"
                 height={40}
-                objectFit="contain"
                 priority
                 src="/images/badge-google-play.png"
                 width={150}
@@ -126,7 +124,6 @@ function Footer() {
               <Image
                 alt="Download on the App Store"
                 height={50}
-                objectFit="contain"
                 priority
                 src="/images/badge-app-store.png"
                 width={150}

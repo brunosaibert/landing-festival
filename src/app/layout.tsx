@@ -29,14 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers>
-          <Box
-            bg="black"
-            minH="100vh"
-          >
-            {children}
-          </Box>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

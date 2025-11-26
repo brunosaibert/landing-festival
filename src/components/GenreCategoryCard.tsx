@@ -42,6 +42,7 @@ function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
           {title}
           {'\n'}
           <Text
+            as="span"
             fontWeight="medium"
             opacity={0.7}
           >
