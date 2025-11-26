@@ -5,7 +5,8 @@ import { EmblaRail } from '@/components/EmblaRail'
 import { GenreCategoryCard } from '@/components/GenreCategoryCard'
 import { Header } from '@/components/Header'
 import { HeroBanner } from '@/components/HeroBanner'
-import { FESTIVAL_GENRES, MOCK_ARTISTS } from '@/data/mock'
+import { LiveChannelCard } from '@/components/LiveChannelCard'
+import { FESTIVAL_GENRES, MOCK_ARTISTS, MOCK_CHANNELS } from '@/data/mock'
 
 export default function Home() {
   return (
@@ -57,6 +58,14 @@ export default function Home() {
             href="#"
             key={index}
             {...item}
+          />
+        ))}
+      </EmblaRail>
+      <EmblaRail title="In Live">
+        {MOCK_CHANNELS.map((channel, index) => (
+          <LiveChannelCard
+            key={index}
+            {...channel}
           />
         ))}
       </EmblaRail>

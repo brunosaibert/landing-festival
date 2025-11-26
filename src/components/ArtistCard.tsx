@@ -1,4 +1,4 @@
-import { Box, Card, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Image, Link, Text } from '@chakra-ui/react'
 
 interface ArtistCardProps {
   artistName: string
@@ -16,7 +16,7 @@ function ArtistCard({ artistName, imageUrl, href = '#' }: ArtistCardProps) {
         _hover={{
           opacity: 0.8,
         }}
-        borderRadius="lg"
+        borderRadius="xl"
         minH="260px"
         minW="200px"
         overflow="hidden"

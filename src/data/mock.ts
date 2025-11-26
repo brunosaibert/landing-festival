@@ -28,3 +28,42 @@ export const FESTIVAL_GENRES = [
   { bg: 'orange', title: 'Metal' },
   { bg: 'cyan', title: 'Reggae' },
 ]
+
+export const MOCK_CHANNELS = [
+  {
+    stageName: 'Main Stage',
+    artistName: 'The Killers',
+    imageUrl: '/images/stage-main.jpg',
+    timeRemaining: '00 min - 00:00 h',
+  },
+  {
+    stageName: 'Indie Stage',
+    artistName: 'Tame Impala',
+    imageUrl: '/images/stage-indie.jpg',
+    timeRemaining: '00 min - 00:00 h',
+  },
+  {
+    stageName: 'Electronic Stage',
+    artistName: 'Calvin Harris',
+    imageUrl: '/images/stage-electronic.jpg',
+    timeRemaining: '00 min - 00:00 h',
+  },
+  {
+    stageName: 'Sunset Stage',
+    artistName: 'Diogo Nogueira',
+    imageUrl: '/images/stage-sunset.jpg',
+    timeRemaining: '00 min - 00:00 h',
+  },
+  {
+    stageName: 'World Stage',
+    artistName: 'Haim',
+    imageUrl: '/images/stage-world.jpg',
+    timeRemaining: '00 min - 00:00 h',
+  },
+  {
+    stageName: 'Favela Stage',
+    artistName: 'Pablo Vittar',
+    imageUrl: '/images/stage-favela.jpg',
+    timeRemaining: '00 min - 00:00 h',
+  },
+]
