@@ -19,6 +19,7 @@ function LiveChannelCard({
   return (
     <Link
       href={href}
+      px={2}
       textDecoration="none"
     >
       <Card.Root

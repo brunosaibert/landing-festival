@@ -5,7 +5,56 @@
 
 .embla {
   overflow: hidden;
+  margin: auto;
+  --slide-spacing: 1rem;
+  --slide-size: 95%;
 }
 .embla__container {
   display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+.embla__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.embla__dot {
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  display: inline-flex;
+  height: 12px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  touch-action: manipulation;
+  width: 12px;
+}
+.embla__dot:after {
+  align-items: center;
+  background-color: #f6c2b4;
+  border-radius: 50%;
+  content: '';
+  display: flex;
+  height: 8px;
+  width: 8px;
+}
+.embla__dot--selected:after {
+  background-color: #e96744;
+  height: 12px;
+  width: 12px;
 }

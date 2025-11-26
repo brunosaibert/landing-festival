@@ -10,6 +10,7 @@ function ArtistCard({ artistName, imageUrl, href = '#' }: ArtistCardProps) {
   return (
     <Link
       href={href}
+      px={2}
       textDecoration="none"
     >
       <Box

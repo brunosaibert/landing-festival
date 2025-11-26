@@ -12,6 +12,7 @@ function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
   return (
     <Link
       href={href}
+      px={2}
       textDecoration="none"
     >
       <Box

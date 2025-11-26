@@ -1,0 +1,66 @@
+import { EmblaCarouselType } from 'embla-carousel'
+import { ComponentPropsWithRef, useCallback, useEffect, useState } from 'react'
+
+type UseDotButtonType = {
+  selectedIndex: number
+  scrollSnaps: number[]
+  onDotButtonClick: (index: number) => void
+}
+
+export function useDotButton(
+  emblaApi: EmblaCarouselType | undefined
+): UseDotButtonType {
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+  const onDotButtonClick = useCallback(
+    (index: number) => {
+      if (!emblaApi) return
+      emblaApi.scrollTo(index)
+    },
+    [emblaApi]
+  )
+
+  const onInit = useCallback((emblaApi: EmblaCarouselType) => {
+    setScrollSnaps(emblaApi.scrollSnapList())
+  }, [])
+
+  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [])
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    onInit(emblaApi)
+    onSelect(emblaApi)
+    emblaApi.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect)
+
+    return () => {
+      emblaApi
+        .off('reInit', onInit)
+        .off('reInit', onSelect)
+        .off('select', onSelect)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [emblaApi])
+
+  return {
+    selectedIndex,
+    scrollSnaps,
+    onDotButtonClick,
+  }
+}
+
+type PropType = ComponentPropsWithRef<'button'>
+
+export function EmblaRailDots({ children, ...rest }: PropType) {
+  return (
+    <button
+      type="button"
+      {...rest}
+    >
+      {children}
+    </button>
+  )
+}
