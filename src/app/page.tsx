@@ -1,4 +1,7 @@
+'use client'
+
 import { Button, Center, Container, Link, Text, VStack } from '@chakra-ui/react'
+import { useMemo } from 'react'
 
 import { ArtistCard } from '@/components/ArtistCard'
 import { EmblaRail } from '@/components/EmblaRail'
@@ -20,44 +23,71 @@ import {
 } from '@/data/mock'
 
 export default function Home() {
-  const LINE_UP_WITH_AD = [...MOCK_ARTISTS]
-  const FESTIVAL_GENRES_WITH_AD = [...FESTIVAL_GENRES]
-  const EXCLUSIVE_CONTENT_WITH_AD = [...MOCK_EXCLUSIVE_CONTENT]
-  const WATCH_AGAIN_WITH_AD = [
-    ...MOCK_ARTISTS.slice(0, 8).filter((artist) => artist.id % 2 !== 0),
-  ]
+  const LINE_UP_WITH_AD = useMemo(() => {
+    const items = [...MOCK_ARTISTS]
+    items.splice(4, 0, {
+      id: 99,
+      name: MOCK_ANNOUNCEMENTS[1].altText,
+      imageUrl: MOCK_ANNOUNCEMENTS[1].imageUrl,
+      genre: 'ad',
+      type: 'ad',
+      href: MOCK_ANNOUNCEMENTS[1].href,
+    })
+    return items
+  }, [])
 
-  LINE_UP_WITH_AD.splice(4, 0, {
-    id: 99,
-    name: MOCK_ANNOUNCEMENTS[1].altText,
-    imageUrl: MOCK_ANNOUNCEMENTS[1].imageUrl,
-    genre: 'ad',
-    type: 'ad',
-    href: MOCK_ANNOUNCEMENTS[1].href,
-  })
+  const FESTIVAL_GENRES_WITH_AD = useMemo(() => {
+    const items = [...FESTIVAL_GENRES]
+    items.splice(2, 0, {
+      title: MOCK_ANNOUNCEMENTS[0].altText,
+      bg: MOCK_ANNOUNCEMENTS[0].imageUrl,
+      href: '#',
+      type: 'ad',
+    })
+    return items
+  }, [])
 
-  FESTIVAL_GENRES_WITH_AD.splice(2, 0, {
-    title: MOCK_ANNOUNCEMENTS[0].altText,
-    bg: MOCK_ANNOUNCEMENTS[0].imageUrl,
-    href: '#',
-    type: 'ad',
-  })
+  const EXCLUSIVE_CONTENT_WITH_AD = useMemo(() => {
+    const items = [...MOCK_EXCLUSIVE_CONTENT]
+    items.splice(2, 0, {
+      title: MOCK_ANNOUNCEMENTS[2].altText,
+      imageUrl: MOCK_ANNOUNCEMENTS[2].imageUrl,
+      href: MOCK_ANNOUNCEMENTS[2].href,
+      type: 'ad',
+    })
+    return items
+  }, [])
 
-  EXCLUSIVE_CONTENT_WITH_AD.splice(2, 0, {
-    title: MOCK_ANNOUNCEMENTS[2].altText,
-    imageUrl: MOCK_ANNOUNCEMENTS[2].imageUrl,
-    href: MOCK_ANNOUNCEMENTS[2].href,
-    type: 'ad',
-  })
+  const WATCH_AGAIN_WITH_AD = useMemo(() => {
+    const filtered = MOCK_ARTISTS.slice(0, 8).filter(
+      (artist) => artist.id % 2 !== 0
+    )
+    const items = [...filtered]
+    items.splice(2, 0, {
+      id: 99,
+      name: MOCK_ANNOUNCEMENTS[1].altText,
+      imageUrl: MOCK_ANNOUNCEMENTS[1].imageUrl,
+      href: MOCK_ANNOUNCEMENTS[1].href,
+      genre: 'ad',
+      type: 'ad',
+    })
+    return items
+  }, [])
 
-  WATCH_AGAIN_WITH_AD.splice(2, 0, {
-    id: 99,
-    name: MOCK_ANNOUNCEMENTS[1].altText,
-    imageUrl: MOCK_ANNOUNCEMENTS[1].imageUrl,
-    href: MOCK_ANNOUNCEMENTS[1].href,
-    genre: 'ad',
-    type: 'ad',
-  })
+  const YESTERDAY_SHOWS = useMemo(() => MOCK_ARTISTS.slice(0, 8), [])
+
+  const ROCK_SINGERS = useMemo(
+    () =>
+      MOCK_ARTISTS.filter(
+        (item) => item.genre === 'Rock' || item.genre === 'Metal'
+      ),
+    []
+  )
+
+  const REVERSED_BANNERS = useMemo(
+    () => MOCK_WIDE_AD_BANNERS.slice().reverse(),
+    []
+  )
 
   return (
     <>
@@ -177,7 +207,7 @@ export default function Home() {
         ))}
       </EmblaRail>
       <EmblaRail title="Yesterday Shows">
-        {MOCK_ARTISTS.slice(0, 8).map((item) => (
+        {YESTERDAY_SHOWS.map((item) => (
           <ArtistCard
             artistName={item.name}
             imageUrl={item.imageUrl}
@@ -215,9 +245,7 @@ export default function Home() {
         })}
       </EmblaRail>
       <EmblaRail title="Rock Singers">
-        {MOCK_ARTISTS.filter(
-          (item) => item.genre === 'Rock' || item.genre === 'Metal'
-        ).map((item) => (
+        {ROCK_SINGERS.map((item) => (
           <ArtistCard
             artistName={item.name}
             imageUrl={item.imageUrl}
@@ -238,14 +266,12 @@ export default function Home() {
           }}
           showDots
         >
-          {MOCK_WIDE_AD_BANNERS.slice()
-            .reverse()
-            .map((item, index) => (
-              <WideAdBanner
-                key={index}
-                {...item}
-              />
-            ))}
+          {REVERSED_BANNERS.map((item, index) => (
+            <WideAdBanner
+              key={index}
+              {...item}
+            />
+          ))}
         </EmblaRail>
       </Center>
       <EmblaRail title="Watch Again">
