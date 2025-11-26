@@ -3,14 +3,14 @@ import { Box, Image, Link } from '@chakra-ui/react'
 interface WideAdBannerProps {
   imageUrl: string
   altText: string
-  targetUrl: string
+  href: string
 }
 
-function WideAdBanner({ imageUrl, altText, targetUrl }: WideAdBannerProps) {
+function WideAdBanner({ imageUrl, altText, href }: WideAdBannerProps) {
   return (
     <Link
       className="embla__slide"
-      href={targetUrl}
+      href={href}
       target="_blank"
     >
       <Box

@@ -41,7 +41,7 @@ function Header() {
               width={150}
             />
           </Link>
-          <HStack>
+          <HStack as="nav">
             {NAV_ITEMS.map(({ icon: Icon, label, href, isActive }) => (
               <Link
                 color={{

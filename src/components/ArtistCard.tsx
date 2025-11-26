@@ -24,12 +24,12 @@ function ArtistCard({
           opacity: 1,
         }}
         borderRadius="xl"
-        minH="260px"
-        minW="200px"
+        h="260px"
         opacity={0.8}
         overflow="hidden"
         position="relative"
         transition="opacity 0.3s"
+        w="200px"
       >
         <Image
           alt={`Pôster de ${artistName}`}

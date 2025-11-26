@@ -7,10 +7,12 @@ import { Footer } from '@/components/Footer'
 import { GenreCategoryCard } from '@/components/GenreCategoryCard'
 import { Header } from '@/components/Header'
 import { HeroBanner } from '@/components/HeroBanner'
+import { InlineAdCard } from '@/components/InlineAdCard'
 import { LiveChannelCard } from '@/components/LiveChannelCard'
 import { WideAdBanner } from '@/components/WideAdBanner'
 import {
   FESTIVAL_GENRES,
+  MOCK_ANNOUNCEMENTS,
   MOCK_ARTISTS,
   MOCK_CHANNELS,
   MOCK_EXCLUSIVE_CONTENT,
@@ -18,18 +20,71 @@ import {
 } from '@/data/mock'
 
 export default function Home() {
+  const LINE_UP_WITH_AD = [...MOCK_ARTISTS]
+  const FESTIVAL_GENRES_WITH_AD = [...FESTIVAL_GENRES]
+  const EXCLUSIVE_CONTENT_WITH_AD = [...MOCK_EXCLUSIVE_CONTENT]
+  const WATCH_AGAIN_WITH_AD = [
+    ...MOCK_ARTISTS.slice(0, 8).filter((artist) => artist.id % 2 !== 0),
+  ]
+
+  LINE_UP_WITH_AD.splice(4, 0, {
+    id: 99,
+    name: MOCK_ANNOUNCEMENTS[1].altText,
+    imageUrl: MOCK_ANNOUNCEMENTS[1].imageUrl,
+    genre: 'ad',
+    type: 'ad',
+    href: MOCK_ANNOUNCEMENTS[1].href,
+  })
+
+  FESTIVAL_GENRES_WITH_AD.splice(2, 0, {
+    title: MOCK_ANNOUNCEMENTS[0].altText,
+    bg: MOCK_ANNOUNCEMENTS[0].imageUrl,
+    href: '#',
+    type: 'ad',
+  })
+
+  EXCLUSIVE_CONTENT_WITH_AD.splice(2, 0, {
+    title: MOCK_ANNOUNCEMENTS[2].altText,
+    imageUrl: MOCK_ANNOUNCEMENTS[2].imageUrl,
+    href: MOCK_ANNOUNCEMENTS[2].href,
+    type: 'ad',
+  })
+
+  WATCH_AGAIN_WITH_AD.splice(2, 0, {
+    id: 99,
+    name: MOCK_ANNOUNCEMENTS[1].altText,
+    imageUrl: MOCK_ANNOUNCEMENTS[1].imageUrl,
+    href: MOCK_ANNOUNCEMENTS[1].href,
+    genre: 'ad',
+    type: 'ad',
+  })
+
   return (
     <>
       <Header />
       <HeroBanner />
       <EmblaRail title="Line Up">
-        {MOCK_ARTISTS.map((artist) => (
-          <ArtistCard
-            artistName={artist.name}
-            imageUrl={artist.image}
-            key={artist.id}
-          />
-        ))}
+        {LINE_UP_WITH_AD.map((item) => {
+          if (item.type === 'ad') {
+            return (
+              <InlineAdCard
+                altText={item.name}
+                height="260px"
+                href="#"
+                imageUrl={item.imageUrl}
+                key={item.id}
+                width="550px"
+              />
+            )
+          }
+          return (
+            <ArtistCard
+              artistName={item.name}
+              imageUrl={item.imageUrl}
+              key={item.id}
+            />
+          )
+        })}
       </EmblaRail>
       <EmblaRail>
         <VStack
@@ -63,13 +118,26 @@ export default function Home() {
             </Button>
           </Link>
         </VStack>
-        {FESTIVAL_GENRES.map((item, index) => (
-          <GenreCategoryCard
-            href="#"
-            key={index}
-            {...item}
-          />
-        ))}
+        {FESTIVAL_GENRES_WITH_AD.map((item, index) => {
+          if (item.type === 'ad') {
+            return (
+              <InlineAdCard
+                altText={item.title}
+                height="200px"
+                href={item.href}
+                imageUrl={item.bg}
+                key={index}
+                width="420px"
+              />
+            )
+          }
+          return (
+            <GenreCategoryCard
+              key={index}
+              {...item}
+            />
+          )
+        })}
       </EmblaRail>
       <Center
         as={Container}
@@ -96,47 +164,64 @@ export default function Home() {
         options={{
           loop: true,
           align: 'start',
-          slidesToScroll: 2,
+          slidesToScroll: 1,
+          dragFree: true,
         }}
         title="In Live"
       >
-        {MOCK_CHANNELS.map((channel, index) => (
+        {MOCK_CHANNELS.map((item, index) => (
           <LiveChannelCard
-            key={index}
-            {...channel}
-          />
-        ))}
-      </EmblaRail>
-      <EmblaRail title="Yesterday Shows">
-        {MOCK_ARTISTS.slice(0, 8).map((artist) => (
-          <ArtistCard
-            artistName={artist.name}
-            imageUrl={artist.image}
-            key={artist.id}
-          />
-        ))}
-      </EmblaRail>
-      <EmblaRail
-        options={{
-          slidesToScroll: 3,
-        }}
-        title="Exclusive Content"
-      >
-        {MOCK_EXCLUSIVE_CONTENT.map((item, index) => (
-          <ExclusiveContentCard
             key={index}
             {...item}
           />
         ))}
       </EmblaRail>
+      <EmblaRail title="Yesterday Shows">
+        {MOCK_ARTISTS.slice(0, 8).map((item) => (
+          <ArtistCard
+            artistName={item.name}
+            imageUrl={item.imageUrl}
+            key={item.id}
+          />
+        ))}
+      </EmblaRail>
+      <EmblaRail
+        options={{
+          align: 'start',
+          slidesToScroll: 1,
+          dragFree: true,
+        }}
+        title="Exclusive Content"
+      >
+        {EXCLUSIVE_CONTENT_WITH_AD.map((item, index) => {
+          if (item.type === 'ad') {
+            return (
+              <InlineAdCard
+                altText={item.title}
+                height="210px"
+                href={item.href}
+                imageUrl={item.imageUrl}
+                key={index}
+                width="450px"
+              />
+            )
+          }
+          return (
+            <ExclusiveContentCard
+              key={index}
+              {...item}
+            />
+          )
+        })}
+      </EmblaRail>
       <EmblaRail title="Rock Singers">
         {MOCK_ARTISTS.filter(
-          (artist) => artist.genre === 'Rock' || artist.genre === 'Metal'
-        ).map((artist) => (
+          (item) => item.genre === 'Rock' || item.genre === 'Metal'
+        ).map((item) => (
           <ArtistCard
-            artistName={artist.name}
-            imageUrl={artist.image}
-            key={artist.id}
+            artistName={item.name}
+            imageUrl={item.imageUrl}
+            key={item.id}
           />
         ))}
       </EmblaRail>
@@ -164,16 +249,28 @@ export default function Home() {
         </EmblaRail>
       </Center>
       <EmblaRail title="Watch Again">
-        {MOCK_ARTISTS.slice(0, 8)
-          .filter((artist) => artist.id % 2 !== 0)
-          .map((artist) => (
+        {WATCH_AGAIN_WITH_AD.map((item) => {
+          if (item.type === 'ad') {
+            return (
+              <InlineAdCard
+                altText={item.name}
+                height="260px"
+                href="#"
+                imageUrl={item.imageUrl}
+                key={item.id}
+                width="550px"
+              />
+            )
+          }
+          return (
             <ArtistCard
-              artistName={artist.name}
-              imageUrl={artist.image}
-              key={artist.id}
+              artistName={item.name}
+              imageUrl={item.imageUrl}
+              key={item.id}
               whatched
             />
-          ))}
+          )
+        })}
       </EmblaRail>
       <Footer />
     </>

@@ -23,14 +23,14 @@ function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
         bg={bgColor}
         borderRadius="lg"
         display="flex"
-        minH={200}
-        minW={200}
+        h={200}
         opacity={0.8}
         overflow="hidden"
         p={4}
         position="relative"
         transition="opacity 0.3s"
         userSelect="none"
+        w={200}
       >
         <Heading
           as="h3"

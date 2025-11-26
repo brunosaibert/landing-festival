@@ -18,11 +18,12 @@ function ExclusiveContentCard({ title, imageUrl, href }: ExclusiveContentCard) {
           opacity: 1,
         }}
         borderRadius="xl"
-        minW="450px"
+        h="210"
         opacity={0.8}
         overflow="hidden"
         position="relative"
         transition="opacity 0.3s"
+        w="450px"
       >
         <Image
           alt={`Pôster de ${title}`}
