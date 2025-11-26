@@ -17,7 +17,7 @@ function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
     >
       <Box
         _hover={{
-          opacity: 0.8,
+          opacity: 1,
         }}
         alignItems="flex-end"
         bg={bgColor}
@@ -25,6 +25,7 @@ function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
         display="flex"
         minH={200}
         minW={200}
+        opacity={0.8}
         overflow="hidden"
         p={4}
         position="relative"

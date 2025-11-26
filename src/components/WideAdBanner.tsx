@@ -14,9 +14,7 @@ function WideAdBanner({ imageUrl, altText, targetUrl }: WideAdBannerProps) {
       target="_blank"
     >
       <Box
-        _hover={{ opacity: 0.9 }}
         overflow="hidden"
-        transition="opacity 0.3s"
         w="full"
       >
         <Image

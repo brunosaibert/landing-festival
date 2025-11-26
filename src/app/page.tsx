@@ -2,6 +2,7 @@ import { Button, Center, Container, Link, Text, VStack } from '@chakra-ui/react'
 
 import { ArtistCard } from '@/components/ArtistCard'
 import { EmblaRail } from '@/components/EmblaRail'
+import { Footer } from '@/components/Footer'
 import { GenreCategoryCard } from '@/components/GenreCategoryCard'
 import { Header } from '@/components/Header'
 import { HeroBanner } from '@/components/HeroBanner'
@@ -104,6 +105,63 @@ export default function Home() {
           />
         ))}
       </EmblaRail>
+      <EmblaRail title="Yesterday Shows">
+        {MOCK_ARTISTS.slice(0, 8).map((artist) => (
+          <ArtistCard
+            artistName={artist.name}
+            imageUrl={artist.image}
+            key={artist.id}
+          />
+        ))}
+      </EmblaRail>
+      {/* TODO: Exclusive Content */}
+      <EmblaRail title="Rock Singers">
+        {MOCK_ARTISTS.filter(
+          (artist) => artist.genre === 'Rock' || artist.genre === 'Metal'
+        ).map((artist) => (
+          <ArtistCard
+            artistName={artist.name}
+            imageUrl={artist.image}
+            key={artist.id}
+          />
+        ))}
+      </EmblaRail>
+      <Center
+        as={Container}
+        bg="white"
+        p={0}
+      >
+        <EmblaRail
+          options={{
+            loop: true,
+            align: 'center',
+            slidesToScroll: 1,
+          }}
+          showDots
+        >
+          {MOCK_WIDE_AD_BANNERS.slice()
+            .reverse()
+            .map((item, index) => (
+              <WideAdBanner
+                key={index}
+                {...item}
+              />
+            ))}
+        </EmblaRail>
+      </Center>
+      <EmblaRail title="Watch Again">
+        {MOCK_ARTISTS.slice(0, 8)
+          .filter((artist) => artist.id % 2 !== 0)
+          .map((artist) => (
+            <ArtistCard
+              artistName={artist.name}
+              imageUrl={artist.image}
+              key={artist.id}
+              whatched
+            />
+          ))}
+      </EmblaRail>
+      <Footer />
     </>
   )
 }

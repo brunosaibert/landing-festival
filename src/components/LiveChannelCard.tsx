@@ -24,11 +24,12 @@ function LiveChannelCard({
     >
       <Card.Root
         _hover={{
-          opacity: 0.8,
+          opacity: 1,
         }}
         bg="gray.900"
         border="none"
         minW="450px"
+        opacity={0.8}
         overflow="hidden"
         rounded="2xl"
         size="sm"
