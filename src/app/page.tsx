@@ -2,6 +2,7 @@ import { Button, Center, Container, Link, Text, VStack } from '@chakra-ui/react'
 
 import { ArtistCard } from '@/components/ArtistCard'
 import { EmblaRail } from '@/components/EmblaRail'
+import { ExclusiveContentCard } from '@/components/ExclusiveContentCard'
 import { Footer } from '@/components/Footer'
 import { GenreCategoryCard } from '@/components/GenreCategoryCard'
 import { Header } from '@/components/Header'
@@ -12,6 +13,7 @@ import {
   FESTIVAL_GENRES,
   MOCK_ARTISTS,
   MOCK_CHANNELS,
+  MOCK_EXCLUSIVE_CONTENT,
   MOCK_WIDE_AD_BANNERS,
 } from '@/data/mock'
 
@@ -114,7 +116,19 @@ export default function Home() {
           />
         ))}
       </EmblaRail>
-      {/* TODO: Exclusive Content */}
+      <EmblaRail
+        options={{
+          slidesToScroll: 3,
+        }}
+        title="Exclusive Content"
+      >
+        {MOCK_EXCLUSIVE_CONTENT.map((item, index) => (
+          <ExclusiveContentCard
+            key={index}
+            {...item}
+          />
+        ))}
+      </EmblaRail>
       <EmblaRail title="Rock Singers">
         {MOCK_ARTISTS.filter(
           (artist) => artist.genre === 'Rock' || artist.genre === 'Metal'
