@@ -20,6 +20,7 @@ function Footer() {
     >
       <Separator opacity={0.5} />
       <HStack
+        flexDirection={{ base: 'column', md: 'row' }}
         gap={20}
         justifyContent="space-between"
         mt={6}
@@ -91,7 +92,7 @@ function Footer() {
           </HStack>
         </VStack>
         <VStack
-          alignItems="flex-end"
+          alignItems={{ base: 'center', md: '"flex-end' }}
           flex={1}
           gap={6}
         >
