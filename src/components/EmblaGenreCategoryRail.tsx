@@ -4,11 +4,14 @@ import { Box, Flex, Heading, useBreakpointValue } from '@chakra-ui/react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { PropsWithChildren } from 'react'
 
-interface EmblaMediaRailProps extends PropsWithChildren {
-  title: string
+interface EmblaGenreCategoryRailProps extends PropsWithChildren {
+  title?: string
 }
 
-function EmblaMediaRail({ children, title }: EmblaMediaRailProps) {
+function EmblaGenreCategoryRail({
+  children,
+  title,
+}: EmblaGenreCategoryRailProps) {
   const [emblaRef] = useEmblaCarousel({
     loop: false,
     dragFree: true,
@@ -29,15 +32,17 @@ function EmblaMediaRail({ children, title }: EmblaMediaRailProps) {
       pb={6}
       pt={10}
     >
-      <Heading
-        as="h2"
-        color="white"
-        fontWeight="bold"
-        mb={4}
-        px={horizontalPadding}
-      >
-        {title}
-      </Heading>
+      {title && (
+        <Heading
+          as="h2"
+          color="white"
+          fontWeight="bold"
+          mb={4}
+          px={horizontalPadding}
+        >
+          {title}
+        </Heading>
+      )}
       <Box
         className="embla"
         overflow="hidden"
@@ -57,4 +62,4 @@ function EmblaMediaRail({ children, title }: EmblaMediaRailProps) {
   )
 }
 
-export { EmblaMediaRail }
+export { EmblaGenreCategoryRail }

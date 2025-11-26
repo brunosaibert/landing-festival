@@ -16,3 +16,15 @@ export const MOCK_ARTISTS = [
   { id: 15, name: 'Ed Sheeron', image: '/images/ed-sheeron.jpg' },
   { id: 16, name: 'Iron Maiden', image: '/images/iron-maiden.jpg' },
 ]
+
+export const FESTIVAL_GENRES = [
+  { bg: 'blue', title: 'Rock' },
+  { bg: 'green', title: 'Pop' },
+  { bg: 'purple', title: 'Funk' },
+  { bg: 'red', title: 'Hip-Hop' },
+  { bg: 'yellow', title: 'Electronic' },
+  { bg: 'teal', title: 'Indie' },
+  { bg: 'pink', title: 'Jazz' },
+  { bg: 'orange', title: 'Metal' },
+  { bg: 'cyan', title: 'Reggae' },
+]
