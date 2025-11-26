@@ -40,7 +40,7 @@ function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
           size="2xl"
         >
           {title}
-          {'\n'}
+          <br />
           <Text
             as="span"
             fontWeight="medium"

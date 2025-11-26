@@ -50,7 +50,7 @@ function ExclusiveContentCard({ title, imageUrl, href }: ExclusiveContentCard) {
           userSelect="none"
         >
           {title}
-          {'\n'}
+          <br />
           <Text
             as="span"
             fontWeight="medium"

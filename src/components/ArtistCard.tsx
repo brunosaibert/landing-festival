@@ -76,7 +76,7 @@ function ArtistCard({
               lineHeight="1.2"
             >
               Watch Again
-              {'\n'}
+              <br />
               <Text
                 as="span"
                 fontWeight="medium"
