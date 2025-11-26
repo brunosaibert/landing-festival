@@ -7,6 +7,7 @@ import {
   Heading,
   HStack,
   IconButton,
+  Link,
   Text,
   VStack,
 } from '@chakra-ui/react'
@@ -61,14 +62,21 @@ function HeroBanner() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Button
-            colorPalette="orange"
-            rounded="full"
-            size="2xs"
+          <Link
+            asChild
+            href="#"
+            unstyled
           >
-            <BsCameraVideo />
-            Choose your camera
-          </Button>
+            <Button
+              as={'a'}
+              colorPalette="orange"
+              rounded="full"
+              size="2xs"
+            >
+              <BsCameraVideo />
+              Choose your camera
+            </Button>
+          </Link>
           <Group>
             <IconButton
               _hover={{

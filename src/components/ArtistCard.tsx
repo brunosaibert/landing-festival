@@ -1,5 +1,4 @@
-import { Box, Card, Image, Text } from '@chakra-ui/react'
-import Link from 'next/link'
+import { Box, Card, Image, Link, Text } from '@chakra-ui/react'
 
 interface ArtistCardProps {
   artistName: string
@@ -11,21 +10,18 @@ function ArtistCard({ artistName, imageUrl, href = '#' }: ArtistCardProps) {
   return (
     <Link
       href={href}
-      passHref
+      textDecoration="none"
     >
-      <Card.Root
+      <Box
         _hover={{
           opacity: 0.8,
         }}
-        as="a"
-        bg="red"
         borderRadius="lg"
-        borderWidth={0}
-        h="260px"
+        minH="260px"
+        minW="200px"
         overflow="hidden"
         position="relative"
         transition="opacity 0.3s"
-        w="200px"
       >
         <Image
           alt={`Pôster de ${artistName}`}
@@ -51,10 +47,11 @@ function ArtistCard({ artistName, imageUrl, href = '#' }: ArtistCardProps) {
           position="absolute"
           right={0}
           textAlign="center"
+          userSelect="none"
         >
           {artistName}
         </Text>
-      </Card.Root>
+      </Box>
     </Link>
   )
 }

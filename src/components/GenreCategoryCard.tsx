@@ -1,5 +1,4 @@
-import { Box, Heading, Image, Text } from '@chakra-ui/react'
-import Link from 'next/link'
+import { Box, Heading, Image, Link, Text } from '@chakra-ui/react'
 
 interface GenreCategoryCardProps {
   bg: string
@@ -7,13 +6,13 @@ interface GenreCategoryCardProps {
   href: string
 }
 
-function GenreCategoryCard({ bg, title, href }: GenreCategoryCardProps) {
+function GenreCategoryCard({ bg, title, href = '#' }: GenreCategoryCardProps) {
   const bgColor = `${bg}.700`
 
   return (
     <Link
       href={href}
-      passHref
+      textDecoration="none"
     >
       <Box
         _hover={{
@@ -29,6 +28,7 @@ function GenreCategoryCard({ bg, title, href }: GenreCategoryCardProps) {
         p={4}
         position="relative"
         transition="opacity 0.3s"
+        userSelect="none"
       >
         <Heading
           as="h3"

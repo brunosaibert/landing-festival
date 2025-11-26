@@ -1,8 +1,7 @@
-import { Button, Text, VStack } from '@chakra-ui/react'
+import { Button, Link, Text, VStack } from '@chakra-ui/react'
 
 import { ArtistCard } from '@/components/ArtistCard'
-import { EmblaGenreCategoryRail } from '@/components/EmblaGenreCategoryRail'
-import { EmblaMediaRail } from '@/components/EmblaMediaRail'
+import { EmblaRail } from '@/components/EmblaRail'
 import { GenreCategoryCard } from '@/components/GenreCategoryCard'
 import { Header } from '@/components/Header'
 import { HeroBanner } from '@/components/HeroBanner'
@@ -13,7 +12,7 @@ export default function Home() {
     <>
       <Header />
       <HeroBanner />
-      <EmblaMediaRail title="Line Up">
+      <EmblaRail title="Line Up">
         {MOCK_ARTISTS.map((artist) => (
           <ArtistCard
             artistName={artist.name}
@@ -21,8 +20,8 @@ export default function Home() {
             key={artist.id}
           />
         ))}
-      </EmblaMediaRail>
-      <EmblaGenreCategoryRail>
+      </EmblaRail>
+      <EmblaRail>
         <VStack
           alignItems="flex-start"
           color="white"
@@ -39,12 +38,19 @@ export default function Home() {
           <Text>
             Explore your favorite genres and discover new rhythms to love!
           </Text>
-          <Button
-            colorPalette="orange"
-            rounded="full"
+          <Link
+            asChild
+            href="#"
+            unstyled
           >
-            See All
-          </Button>
+            <Button
+              as={'a'}
+              colorPalette="orange"
+              rounded="full"
+            >
+              See All
+            </Button>
+          </Link>
         </VStack>
         {FESTIVAL_GENRES.map((item, index) => (
           <GenreCategoryCard
@@ -53,7 +59,7 @@ export default function Home() {
             {...item}
           />
         ))}
-      </EmblaGenreCategoryRail>
+      </EmblaRail>
     </>
   )
 }

@@ -4,14 +4,11 @@ import { Box, Flex, Heading, useBreakpointValue } from '@chakra-ui/react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { PropsWithChildren } from 'react'
 
-interface EmblaGenreCategoryRailProps extends PropsWithChildren {
+interface EmblaRailProps extends PropsWithChildren {
   title?: string
 }
 
-function EmblaGenreCategoryRail({
-  children,
-  title,
-}: EmblaGenreCategoryRailProps) {
+function EmblaRail({ children, title }: EmblaRailProps) {
   const [emblaRef] = useEmblaCarousel({
     loop: false,
     dragFree: true,
@@ -62,4 +59,4 @@ function EmblaGenreCategoryRail({
   )
 }
 
-export { EmblaGenreCategoryRail }
+export { EmblaRail }
